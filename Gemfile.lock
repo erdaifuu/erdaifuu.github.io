@@ -263,4 +263,4 @@ DEPENDENCIES
   wdm (~> 0.1.1)
 
 BUNDLED WITH
-   3.2.3
+   2.4.13
