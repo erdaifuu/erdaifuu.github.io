@@ -29,6 +29,8 @@ url: "https://erdaifuu.github.io" # the base hostname & protocol for your site, 
 twitter_username: erdaifuu
 github_username:  erdaifuu
 
+# Google Analytics
+google_analytics: G-SN618PWG0X
 # Build settings
 theme: minima
 plugins:
