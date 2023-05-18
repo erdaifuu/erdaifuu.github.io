@@ -18,13 +18,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Erdaifuu
+title: Carl's Math Project
 email: erdaifuu+website@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
+  Class and textbook notes, guides on math olympiads, highschool mathematics guide, proof writing and LaTeX assistance, and everything you would need to excel in mathematics. 
+baseurl: "/home" # the subpath of your site, e.g. /blog
 url: "https://erdaifuu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: erdaifuu
 github_username:  erdaifuu
@@ -32,7 +30,7 @@ github_username:  erdaifuu
 # Google Analytics
 google_analytics: G-SN618PWG0X
 # Build settings
-theme: minima
+theme: minimal-mistakes-jekyll
 plugins:
   - jekyll-feed
 
