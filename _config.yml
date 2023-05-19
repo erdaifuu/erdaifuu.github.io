@@ -34,7 +34,7 @@ google_analytics: G-SN618PWG0X
 
 # Build settings
 markdown: kramdown
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+remote_theme: "mmistakes/minimal-mistakes"
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
