@@ -18,12 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+repository: erdaifuu/erdaifu.github.io
+
 title: Carl's Math Project
 email: erdaifuu+website@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Class and textbook notes, guides on math olympiads, highschool mathematics guide, proof writing and LaTeX assistance, and everything you would need to excel in mathematics. 
-baseurl: "/home" # the subpath of your site, e.g. /blog
-url: "https://erdaifuu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+#url: "https://erdaifuu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: erdaifuu
 github_username:  erdaifuu
 minimal_mistakes_skin: default
