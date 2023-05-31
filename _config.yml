@@ -44,6 +44,7 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
   - _pages
+  - _materials
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -119,20 +120,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _materials
-  - scope:
-      path: ""
-      type: materials
-    values:
-      layout: single
-      read_time: false
-      author_profile: false
-      share: true
-      toc: true
-      toc_label: "Materials Selection"
-      comments: true
-      sidebar:
-        nav: "materials"
 
 category_archive:
   type: liquid

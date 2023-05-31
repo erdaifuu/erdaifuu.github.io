@@ -1,6 +1,6 @@
 ---
 title: "Navigating The Materials Page"
-permalink: /materials/navigation
+permalink: /materials/navigation/
 layout: single
 author_profile: false
 toc: true

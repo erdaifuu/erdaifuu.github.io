@@ -14,7 +14,7 @@ materials:
   - title: Using Materials
     children:
       - title: "Navigation"
-        url: /materials/navigation
+        url: /materials/navigation/
       - title: "Structure"
         url: /docs/structure/
       - title: "Installation"
@@ -25,7 +25,7 @@ materials:
   - title: Math Olympiads
     children:
       - title: "Past Tests"
-        url: /materials/past-tests
+        url: /materials/past-tests/
       - title: "Navigation"
         url: /docs/navigation/
       - title: "UI Text"
