@@ -1,5 +1,5 @@
 ---
-title: "Introduction to LaTeX"
+title: "LaTeX 01 - Introduction to LaTeX"
 categories:
   - LaTeX
 ---
