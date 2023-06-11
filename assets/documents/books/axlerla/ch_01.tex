@@ -1,0 +1,434 @@
+\chapter{Vector Spaces}
+
+\section{\texorpdfstring{$R^{n}$ and $C^{n}$}{Rn and Cn}}
+
+\subsection{Complex Numbers}
+
+The set of all complex numbers is 
+\begin{equation*}
+  C = \left\{a + bi : a, b \in \RR\right\}
+\end{equation*}
+If $a \in \RR$, then $a + 0i$ could be represented as the same thing, so we can say that $\RR \subset \CC$.
+
+Addition and multiplication in the field are defined by
+\begin{gather*}
+  \left(a + bi\right) + \left(c + di\right) = (a + c) + (b + d)i \\ 
+  (a + bi)(c + di) = (ac - bd) + (ad + bc)i.
+\end{gather*}
+
+Addition and multiplication satisfy the properties
+\begin{itemize}
+  \item commutativity \: $w + z = z + w$, $wz = zw$
+  \item associativity \; $(z_{1} + z_{2}) + z_{3} = z_{1} + (z_{2} + z_{3})$, $(z_{1}z_{2})z_{3} = z_{1}(z_{2}z_{3})$
+  \item identities \; $z + 0 = z$, $z \cdot 1 = z$
+  \item additive inverse \; $\forall z \in \CC$, $\exists w \in \CC \mid z + w = 0$
+  \item multiplicative inverse \; $\forall z \in \CC$, $z \neq 0 \implies \exists w \in \CC \mid zw = 1$ 
+  \item distributive inverse \; $\lambda (w + z) = \lambda w + \lambda z \implies \forall \lambda$, $w$, $z \in \CC$
+\end{itemize}
+
+Subtraction is definied by $w - z = w + (-z)$. 
+
+We can conveniently make definitions and prove theorems for both $\RR$ and $\CC$, so we adopt the notation below.
+\begin{definition}
+  $F$ stands for either the set $\RR$ and $\CC$.
+\end{definition}
+Therefore, if we prove a theorem involving $F$, we prove it for either $\RR$ or $\CC$.
+Elements of $F$ are \vocab{scalars}, which simply means numbers, and is used to emphasize that the object is a number instead of a vector.
+
+\section{Definitions of a Vector Space}
+
+The vector space $\RR^2$, which is akin to a palne, contains all ordered pair of real numbers:
+\begin{equation*}
+  \RR^2 = \left\{(x, y) : x, y \in \RR\right\}
+\end{equation*}
+To generalize $\RR^2$ and $\RR^{3}$ to higher dimensions, we need to discuss the concepts of lists.
+
+\subsection{Lists}
+
+\begin{definition}
+  Suppose $n$ is a nonnegative integer. 
+  A \vocab{list} of length $n$ is the collection of $n$ objects seperated by commas, like this:
+  \begin{equation*}
+    \left(x_{1, x_{2}, \dots, x_{n}}\right).
+  \end{equation*}
+  Thus, a list of length $2$ is an ordered pair, and a list of length $3$ is called the first coordinate.
+\end{definition}
+
+For $j \in \left\{1, \dots, n\right\}$, we say that $x_{j}$ is the $j$\textsuperscript{th} \vocab{coordinate} of the list.
+For example, $x_{1}$ is called the \underline{first coordinate}.
+
+A list of infinite length, shown as 
+\begin{equation*}
+  \left(x_{1}, x_{2}, \dots\right)
+\end{equation*}
+is not a list.
+
+A list of legnth $0$ looks like $()$. 
+Two lists are equl iff they have the same length and coordinates in the same order.
+
+\begin{example}
+  $\left(x_{1}, \dots, x_{m}\right) = \left(y_{1}, \dots, y_{n}\right) \iff m = n$ and $x_{1} = y_{1}, \dots, x_{m} = y_{n}$.
+\end{example}
+
+In lists, order matters and repetitions are allowed. 
+
+\subsection{\texorpdfstring{$F^{n}$}{Fn}}
+\begin{definition}
+  We define $F^{n}$ to be the set of all lists of length $n$ consisting of elements of $F$:
+  \begin{equation*}
+    F^{n} = \left\{(x_{1}, \dots, x_{n}) : x_{j} \in F \text{ for } j = 1, \dots, n\right\}
+  \end{equation*}
+\end{definition}
+
+We can perform algebraic manipulations on these.
+\begin{example}
+  Addition in $F^{n}$ is 
+  \begin{equation*}
+    (x_{1}, \dots, x_{n}) + (y_{1}, \dots, y_{n}) = (x_{1} + y_{1}, \dots, x_{n} + y_{n})
+  \end{equation*}
+\end{example}
+
+If $x \in F^{n}$, then $x - (x_{1}, \dots, x_{n})$ is a good notation.
+
+We can draw pictures depicting $\RR^{2}$, such as the point $x = (x_{1}, x_{2})$, and we can draw it like an arrow orginating from $(0, 0)$.
+We call this a \vocab{vector}. 
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale = 0.7]
+    \draw   (4,0) -- (-1, 0)
+      (0,3) -- (0,-1);
+    \draw[->] (0,0) -- node[above]{$\vb{x}$} (3,2) node[right]{$(x_{1}, x_{2})$};
+  \end{tikzpicture}
+\end{figure}
+
+Keep in mind that vectors and points do not substitute the actual math (algebra). 
+We can refer to a vector (such as point ($-2$, $-3$, $-17$, $\pi$, $\sqrt{2}$)) in $\RR^{5}$ without worrying about its actual meaning.
+
+\subsection{Vector Operations}
+
+In the case of $\RR^{2}$, if we have vectors $x$ \& $y$, we can move $y$ parallel to itself until its initial point matches up with $x$'s endpoint.
+Then, $x + y$ equals the vector whose initial point is the initial point of $x$, and its end point is the end point of $y$.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[vector, myred] (0, 0) -- (2.5, 0.5) node[midway,below] {$\vb{a}$};
+    \draw[vector, myblue] (0, 0) -- (0.5, 1.5) node[midway, above left=] {$\vb{b}$};
+    \draw[vector, thin arrow, myblue!40] (2.5, 0.5) -- (3, 2) node[midway, below right] {$\vb{b}$};
+    \draw[vector, thin arrow, myred!40] (0.5, 1.5) -- (3, 2) node[midway, above] {$\vb{a}$};
+    
+    \draw[vector, mypurple] (0, 0) -- (3, 2) node[above right] {$\vb{a + b}$};
+  \end{tikzpicture}
+\end{figure}
+
+Keep in mind, we can move an arrow parallel to itself and still think of it as the same vector.
+
+We can define multiplication as similar to addition, but that isn't useful.
+Instead, it is \vocab{scalar multiplication} that is central.
+
+\begin{definition}
+  \vocab{Scalar multiplication} is multiplying an element of $F^{n}$ by an element of $F$. For example,
+  \begin{equation*}
+    a(x_{1}, \dots, x_{n}) = (ax_{1}, \dots, ax_{n})
+  \end{equation*}
+  where $a \in F$, $(x_{1}, \dots, x_{n}) \in F^{n}$.
+\end{definition}
+
+In $\RR^{2}$, the geometric interpretation of the former can be interpreted as vectors. 
+If $a \in \ZZ$ and $a > 0$, then $ax$ is the vector that points in the same direction with length $a$ times that of $x$.
+Or, $ax$. In short, we are shrinking or stretching $x$ by a factor of $a$.
+
+\begin{remark}
+  Dot products in $R^{2}$ multiplies $2$ vectors to get a scalar, and cross product in $\RR^{3}$ does the same.
+\end{remark}
+
+\subsection{Vector Space}
+
+The motivation for defining a \vocab{vector space} comes from the important properties of addition and scalar multiplication on $F$.
+
+\begin{itemize}
+  \item Addition on $F^{n}$ is commutative and associative and also has an identity $(0)$.
+  \item Every element has an additive inverse, scalar multiplication is associative and has an identity $(1)$.
+  \item Addition and scalar multiplication on $F^{n}$ are also connected by distributive properties.
+\end{itemize}
+
+  We will define a vector space to be a set $V$ with an addition and a scalar multiplication on $V$ with the previous properties.
+By an addition, we mean a function that assigns an element $u + v \in V$ to $u$, $v \in V$. 
+By a scalar multiplication on $V$, we mean a function that assigns an element $av \in V$ for $a$, $v \in V$.
+
+\begin{definition}
+  A \vocab{vector space} is a set $V$ along with addition and scalar multiplication such that the following properties hold:
+  \begin{itemize}
+  \item \textbf{Commutativity} \; $u + v = v + a$, $\forall a$, $v \in V$
+  \item \textbf{Associativity} 
+  \item \textbf{Additive identity} \; $\exists 0 \in V : v + 0 = v$, $\forall v \in V$
+  \item \textbf{Additive inverse} \; $\forall v \in V$, $\exists w \in V : v + w = 0$
+  \item \textbf{Multiplicative identity} \; $1v = v$, $\forall v \in V$
+  \item \textbf{Distributive properties} 
+  \end{itemize}
+\end{definition}
+
+Scalar multiplication depends on $F$, thus we say that $V$ is a vector space over $F$. 
+\begin{example}
+  $R^{n}$ is a vector space over $R$, and $C^{n}$ is a vector space over $C$.
+\end{example}
+
+\begin{definition}[Real and Complex Vector Space]
+  A vector space over $R$ is called a \vocab{real vector space}, while a vector space over $\CC$ is called a \vocab{complex vector space}.
+\end{definition}
+
+\begin{definition}[$F^S$]
+  If $S$ is a set, then $F^{S}$ denotes the set of functions from $S \to F$.
+  For $f$, $g \in F^{S}$, the sum $f + g \in F^{S}$ is defined by
+  \begin{equation*}
+    (f + g)(x) = f(x) + g(x)
+  \end{equation*}
+  $\forall x \in S$.
+
+  For $\lambda \in F$ and $f \in F^{S}$, $\lambda f$ is defined by 
+  \begin{equation*}
+    (\lambda f)(x) = \lambda f(x)
+  \end{equation*}
+  $\forall x \in S$.
+\end{definition}
+
+From the previous, if $S = \left[0, 1\right]$ and $F = \RR$, then $\RR^{\left[0, 1\right]}$ is the set of functions on the interval$[0, 1]$.
+
+\begin{theorem}[Unique Additive Identity]
+  A vector space has a \vocab{unique additive identity} $(0)$. 
+\end{theorem}
+
+\begin{theorem}[Unique Additive Inverse]
+  Every element in a vector space has a \vocab{unique additive inverse}.
+\end{theorem}
+
+\begin{definition}[$-v$, $w - v$]
+  Let $v$, $w \in V$. Then,
+  \begin{itemize}
+    \item $-v$ is the additive inverse of $v$, 
+    \item $w - v$ is defined to be $w + (-v)$.
+  \end{itemize}
+\end{definition}
+
+To avoid restating from this point forward, we shall define $V$.
+
+\begin{definition}[$V$ notation]
+  $V$ denotes a vector space over $F$ in the context of this book.
+\end{definition}
+
+\begin{theorem}[The number $0$ times a vector ]
+  $0v = 0$, $\forall v \in V$.
+\end{theorem}
+
+\begin{proof}
+  $\forall v \in V$, we have
+  \begin{align*}
+    0v &= (0 + 0)v
+       &= 0v + 0v
+       &= 0 + 0v
+  \end{align*}
+  so therefore, $\boxed{0v = 0}$.
+\end{proof}
+
+Theorem $1.2.15$ stated that the product of the scalar $0$ and any vector equates the vector $0$.
+The next theorem shall state that the product of any scalar and vector $0$ equals the vector $0$.
+There is a distinct difference!
+
+\begin{theorem}[A number times the vector $0$]
+  $a0 = 0$ for every $a \in F$.
+\end{theorem}
+
+\begin{theorem}[The number $-1$ times a vector]
+  $(-1)v = -v$, $\forall v \in V$.
+\end{theorem}
+
+\section{Subspaces}
+
+\begin{definition}[Subspace]
+  A subset $U$ of $V$ is called a \vocab{subspace} of $V$, if $U$ is also a vector space 
+  (with the same addition and multiplication properties).
+\end{definition}
+
+\begin{example}
+  The set
+  \begin{equation*}
+    \left\{(x_{1}, x_{2}, 0) : x_{1}, x_{2} \in F\right\}
+  \end{equation*}
+  is a subspace of $F^{3}$.
+\end{example}
+
+Some books refer to this as a linear subspace, which means the same thing.
+
+\begin{theorem}[Conditions for a subspace]
+  A subset $U$ of $V$ is a subspace iff $U$ satisfies: 
+  \begin{itemize}
+    \item Additive identity \; $0 \in V$, or $U$ is nonempty
+    \item Closed under addition \; $u$, $w \in U \implies u + w \in U$
+    \item Closed under scalar multiplication \; $a \in F$ and $u \in U \implies au \in U$.
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  If $U$ is a subspace, then the above conditions are included in the definition.
+
+  Conversely, if $U$ satisfies the conditions, the first ensures the additive identity of $V$ is in $U$.
+  The second ensures that addition makes sense in $U$, and the third ensures that multiplication similarily makes sense.
+
+  If $u \in U$, $-u = (-1)u \in U$ by the third condition, so an additive inverse exists.
+\end{proof}
+
+\begin{example}[Subspaces]
+  If $b \in F$, 
+  \begin{equation*}
+    \left\{(x_{1}, x_{2}, x_{3}, x_{4}) \in F^{4} : x_{3} = 5x_{4} + b\right\}
+  \end{equation*}
+  is a subset of $F^{4}$ iff $b = 0$.
+
+  The rest of the examples are in page $19$ of the book.
+\end{example}
+
+Clearly, $\left\{0\right\}$ is the smallest subspace of $V$ and $V$ itself is the largest subspace of $V$. 
+$\{\}$ is not a subspace since it isn't a vector space.
+
+The subspaces of $\RR_{2}$ are $\{0\}$, $\RR^{2}$, and all lines passing through the origin.
+
+\subsection{Sum of Subspaces}
+
+\begin{definition}[Sum of Subsets]
+  Suppose $U_{1}, \dots, U_{n}$ are subsets of $V$. 
+  The sum is the set of all possible sums of elements of $U_{i}, \dots, U_{m}$ denoted by $u_{1}, \dots, u_{m}$. More precisely,
+  \begin{equation*}
+    U_{1} + \dots + U_{m} = \left\{u_{1} + \dots + u_{m} : u_{1} \in U_{1}, \dots, u_{m} \in U_{m}\right\}.
+  \end{equation*}
+\end{definition}
+
+\begin{example}
+  Suppose $U$ is the set of all elements in $F^{3}$ whose $2$\textsuperscript{nd} and $3$\textsuperscript{rd} coordinates equal $0$.
+  Additionally, $W$ is the set of all elements of $F^{3}$ whose first and third coordinates equal $0$, represented by
+  \begin{equation*}
+    U = \left\{(x, 0, 0) : x \in F^{3}\right\} \text{ and } W = \left\{(0, y, 0) \in F^{3} : y \in F\right\}.
+  \end{equation*}
+  Then, 
+  \begin{equation*}
+    U + W = \left\{(x, y, 0) : x, y \in F\right\}.
+  \end{equation*}
+\end{example}
+
+\begin{example}
+  Suppose 
+  \begin{gather*}
+    U = \left\{(x, x, y, y) \in F^{4} : x, y \in F\right\} \\
+    W = \left\{(x, x, x, y) \in F^{4} : x, y \in F\right\}.
+  \end{gather*}
+  Then, 
+  \begin{equation*}
+    U + W = \left\{(x, x, y, z) \in F^{4} : x, y, z \in F\right\}.
+  \end{equation*}
+\end{example}
+
+\begin{remark}
+  The previous $x$, $y$, $z$ are all different from the ones in $U$ and $W$, as they simply indicate the new values are the same.
+\end{remark}
+
+The next result states that the sum of spaces is a subspace, and the smallest subspace consists of all the summands.
+\begin{theorem}[Sum of subspaces is the smallest containing subspace]
+  Suppose $U_{1}, \dots, U_{m}$ are subspaces of $V$. 
+  Then $U_{1} + \dots + U_{m}$ is the smallest subspace of V containing $U_{1}, \dots, U_{m}$.
+\end{theorem}
+
+\subsection{Direct Sum}
+
+Suppose $U_{1}, \dots, U_{m}$ are subspaces of $V$. 
+Every element of $U_{1} + \dots + U_{m}$ can be written in the form 
+\begin{equation*}
+  U_{1} + \dots + U_{m}
+\end{equation*}
+where each $u_{j}$ is in $U_{j}$. 
+We're interested in cases where each vector in $u_{i} + \dots + u_{m}$ can be represented in only one way.
+We call that situation \vocab{direct sum}.
+
+\begin{definition}[Direct sum]
+  Suppose $U_{1}, \dots, U_{m}$ are subspaces of $V$. 
+
+  The sum $U_{1} + \dots + U_{m}$ is called a direct sum, if each element of $U_{1} + \dots + U_{m}$ can be written in only one way as a sum $u_{1} + \dots + u_{m}$.
+  
+  If $U_{1}, \dots, U_{m}$ is a direct sum, then $U_{1} \oplus \dots \oplus U_{m}$ denotes $U_{1} + \dots + U_{m}$,
+  with the notation serving as an indication that this is a direct sum.
+\end{definition}
+
+\begin{example}
+  Suppose $U$ is the subspace of $F^{3}$, where the last coordinate equals $0$.
+  Additionally, $W$ is the subspace of $F^{3}$ of those vectors whose first two coords equals $0$. Or,
+  \begin{equation*}
+    U = \left\{(x, y, 0) \in F_{3} : x, y \in F\right\} \text{ and } W = \left\{(0, 0, z) \in F^{3} : z \in F\right\}.
+  \end{equation*}
+  Then, $F^{3} = U \oplus W$.
+\end{example}
+
+The next example is more general:
+
+\begin{example}
+  Suppose $U_{j}$ is the subspace of $F^{n}$ whose vectors' coordinates are all $0$, except for the $j$\textsuperscript{th} slot.
+
+  For example, $U_{2} = \left\{(0, x, 0, \dots, 0) \in F^{n} : x \in F\right\}$. 
+  Then,
+  \begin{equation*}
+    F^{n} : U_{1} \oplus \dots \oplus U_{n}.
+  \end{equation*}
+\end{example}
+
+The next one is a nonexample.
+\begin{claim}[Nonexample]
+  \begin{gather*}
+    U_{1} = \left\{(x, y, 0) \in F^{3} : x, y \in F\right\} \\
+    U_{2} = \left\{(0, 0, z) \in F_{3} : z \in F\right\} \\
+    U_{3} = \left\{(0, y, y) \in F_{3} : y \in F\right\}.
+  \end{gather*}
+  Show that $U_{1} + U_{2} + U_{3}$ isn't a direct sum.
+\end{claim}
+
+\begin{soln}
+  Clearly, $F^{3} = U_{1} + U_{2} + U_{3}$.
+  However, $F^{3}$ does not equal the direct sum of $U_{1}$, $U_{2}$, $U_{3}$, 
+  since the vector $(0, 0, 0)$ can be written in many different ways as a sum $u_{1} + u_{2} + u_{3}$, so the sum isn't unique.
+  Specifically, we have
+  \begin{equation*}
+    (0, 0, 0) = (0, 1, 0) + (0, 0, 1) + (0, -1, -1)
+  \end{equation*}
+  and 
+  \begin{equation*}
+    (0, 0, 0) = (0, 0, 0) + (0, 0, 0) + (0, 0, 0))))
+  \end{equation*}
+  where the first vector on the right side of the equation is $U_{1}$, the second is $U_{2}$, and the third is $U_{3}$.
+\end{soln}
+
+The definition of direct sum requires every vector in the sum to have a unique representation as an appropriate sum.
+The next result shows that when deciding if a sum of a subspace is a direct sum, we only need to consider the $0$ case.
+
+\begin{theorem}[Conditions for a direct sum]
+  Suppose $U_{1}, \dots, U_{m}$ are subspaces of $V$. 
+  Then, $U_{1} + \dots + U_{m}$ is a direct sum iff the only way to write $0$ as a sum $u_{1} + \dots + u_{m}$,
+  where $u_{j} \in U_{j}$, is by taking each $u_{j} = 0$.
+\end{theorem}
+
+The next result gives a simple condition for testhing which parirs of subspaces give a direct sum.
+
+\begin{theorem}[Direct sum of 2 subspaces]
+  Suppose $U$ and $W$ are subspaces of $V$.
+  Then, $U + W$ is a direct sum iff $U \cap W = {0}$ (the intersection of the sets is $0$).
+\end{theorem}
+
+The result above only deals with 2 subspaces. 
+When asked about a possible direct sum with more than 2 subspaces, it is \textbf{not enough} to simply test that each pair follows the above criteria.
+
+For example, in claim $1.3.13$, we have 
+\begin{equation*}
+  U_{1} \cap U_{2} = U_{1} \cap U_{3} = U_{2} \cap U_{3} = 0,
+\end{equation*}
+even when their sum is not a direct sum.
+
+
+
+
+
