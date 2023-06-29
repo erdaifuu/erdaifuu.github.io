@@ -7,8 +7,8 @@ main:
     url: /materials/navigation
   - title: "About"
     url: /about/
-  - title: "Google"
-    url: https://google.com
+  - title: "Blog"
+    url: /wednesday/
 
 materials:
   - title: Using Materials
