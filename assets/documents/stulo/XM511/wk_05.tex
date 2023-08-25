@@ -1,0 +1,166 @@
+\section{Lectures 21-24}
+\subsection{Row Space}
+\begin{definition}
+  The \vocab{row space} of an $m \times n$ matrix $A$ (with real entries) is the span of the rows of $A$
+  each viewed as a vector in $\RR^{n}$.
+\end{definition}
+
+\begin{definition}
+  The \vocab{row rank} of a matrix is the dimension of its row space.
+\end{definition}
+
+\begin{theorem}
+  If $B$ is a matrix in row-reduced form, then a basis for the row space of $B$ is the set of nonzero rows 
+  of $B$, and the row rank is the number of nonzero rows of $B$.
+\end{theorem}
+
+\begin{theorem}
+  If matrix $B$ is obtained from matrix $A$ by a series of elementary row operations, then 
+  \begin{equation*}
+    rowspace(B) = rowspace(A).
+  \end{equation*}
+\end{theorem}
+
+\begin{lemma}
+  If $V$ is a vector space and $S \subset T \subset V$, then $span(S) \subset span(V)$.
+\end{lemma}
+
+\begin{lemma}
+  If $V$ is a vector space and $S \subset V$, then $span(span(S)) = span(S)$.
+\end{lemma}
+
+\begin{lemma}
+  If $V$ is a vector space and $S, T \subset V$ such that $S \subset span(T0)$, then $span(S) \subset span(T)$.
+\end{lemma}
+
+\begin{lemma}
+  If $v_{1}, \dots, v_{n}$ are nonzero vectors in the vector space $V$, then
+  \begin{enumerate}
+    \item $span\{v_{1}, \dots, v_{k}, \dots, v_{n}\} = span \left\{v_{1}, \dots, v_{k - 1}, v_{k} + \lambda v, \dots, v_{n}\right\}$.
+    \item $span \left\{v_{1}, \dots, v_{k}, \dots, vln\right\} = span \left\{v_{1}, \dots, v_{k - 1}, \lambda v_{k}, \dots, v_{n}\right\}$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{theorem}
+  If $B$ is a matrix in row-reduced form, then a basis for the row space of $B$ is the set of nonzero rows of $B$, and 
+  the row rank is the number of nonzero rows of $B$.
+\end{theorem}
+
+\begin{theorem}
+  If matrix $B$ is obtained from matrix $A$ by a series of elementary row operations, then $rowspace(B) = rowspace(A)$.
+\end{theorem}
+
+\begin{corollary}
+  A basis for the row space of a matrix $A$ is the set of nonzero rows of a matrix $B$ obtained by transforming $A$ to row-reduced form using
+  elementary row operations; the row rank of $A$ is the number of nonzero rows of the row-reduced matrix $B$.
+\end{corollary}
+
+Keep in mind that a basis for $span(S)$ equals a basis for $rowspace(A)$ equals a basis for $rowspace(B)$ equals the set of nonzero rows of $B$,
+where $S$ is the row space, $A$ is the original matrix, and $B$ is the row reduced form of $A$.
+
+To find a basis for the span of $\left\{u_{1}, \dots, u_{m}\right\}$ in the $n$-dimensional vector space $V$:
+\begin{enumerate}
+  \item Find coordinate representation of $u_{1}, \dots, u_{m}$ with respect to some basis $S$ of $V$.
+
+    This representation is an $n$-tuple or vectors in $\RR^{n}$.
+  \item Find a basis for $\RR^{n}$ for the span of these $n$-tuples or vectors in $\RR^{n}$.
+
+    This basis of $n$-tuples consists of the coordinate representation of the vectors n a basis for $span \left\{u_{1}, \dots, u_{m}\right\}$.
+\end{enumerate}
+
+\begin{lemma}
+  Suppose $S = \left\{v_{1}, \dots, v_{n}\right\}$ is a basis for $V$, $\left\{u_{1}, \dots, u_{m}\right\} \subset v$, and $u \in V$.
+  $u$ is a linear combination of $u_{1}, \dots, u_{m}$ iff the coordiante representation with respect to $S$ of $u$ (viewed as an $n$-tuple in $\RR^{n}$)
+  is the same linear combination of the coordinate representations of $u_{1}, \dots, u_{m}$.
+\end{lemma}
+
+\begin{theorem}
+  Suppose $S$ is a basis for the $n$-dimensional vector space $V$, and $u_{1}, \dots, u_{m}$ are vectors in $V$ such that the coord. representation of $u_{1}$
+  is the row matrix $a_{i1}$ through $a_{in}$.a
+
+  Let $A = \left[a_{ij}\right]$ so the rows of $A$ are the coord. representations of $u_{1}, \dots, u_{m}$.
+  If $T$ is some set of vectors in $V$ whose coordinate representations with respects to $S$ form a basis for the row space of $A$ 
+  as a subspace of $\RR^{n}$, then $T$ is a basis for $span \left\{u_{1}, \dots, u_{m}\right\}$.
+\end{theorem}
+
+\begin{remark}
+  If $V$ is an $n$-dimensional vector space with basis $S$, then the coordinate representation with respect to $S$ gives a 
+  one-to-one correspondence between vectors in $V$ and $n$-tuples in $\RR^{n}$.
+\end{remark}
+
+\begin{theorem}
+  Let $S$ be a set of $k$ vectors in $\RR^{n}$, and let $A$ be the $k \times n$ matrix whose rows are the $n$-tuples in $S$.
+  $S$ is linearly independent if and only if the row rank of $A$ is $k$, the number of elements in $S$.
+\end{theorem}
+
+\subsection{Column Space And Rank}
+\begin{definition}
+  The \vocab{column space} of a $p \times n$ matrix $A$ is the span of the columns of $A$ viewed as vectors in $\RR^{p}$.
+
+  This is denoted $colspace(A)$.
+\end{definition}
+
+\begin{definition}
+  The \vocab{column rank} of $A$ is the dimension of the column space of $A$.
+\end{definition}
+
+\begin{remark}
+  If $A$ is $p \times n$, then the rows of $A$ are vectors in $\RR^{n}$ and the columns of $A$ are vectors in $\RR^{p}$.
+\end{remark}
+
+\begin{theorem}
+  For any $p \times n$ matrix $A$, $rowrank(A) = colrank(A)$.
+\end{theorem}
+
+\begin{definition}[Rank]
+  The \vocab{rank} of a matrix $A$ is the row rank of $A$, which is the same as the column rank.
+
+  This is denoted $rank(A)$, or simply $r(A)$.
+\end{definition}
+
+\begin{theorem}
+  The system $Ax = b$ is consistent iff $r(A) = r(\left[A \mid b\right])$.
+\end{theorem}
+
+\begin{lemma}
+  For any vector $v$, $v_{1}, \dots, v_{n}$ in a vector space $V$, $v \in span \left\{v_{1}, \dots, v_{n}\right\}$
+  iff $\dim(span \left\{v_{1}, \dots, v_{n}\right\}) = \dim(span \left\{v_{1}, \dots, v_{n}, v\right\})$.
+\end{lemma}
+
+\begin{remark}
+  In practice, to determine if $r(A) = r(\left[A \mid b\right])$, we must row-reduced $\left[A \mid b\right]$.
+\end{remark}
+
+\begin{theorem}
+  Suppose $Ax = b$ is a consistent system of $n$ variables. If $r(A) = k$, then the solution to the system are expressible in terms of $n - k$ arbitrary unknowns.
+\end{theorem}
+
+\begin{corollary}
+  The homogeneous system $Ax = 0$ in $n$ variables has nontrivial solutions iff $r(A) \neq n$.
+\end{corollary}
+
+\subsection{Invertibility}
+\begin{theorem}
+  An $n \times n$ matrix $A$ is invertible iff $r(A) = n$. 
+\end{theorem}
+
+\begin{lemma}
+  If $A$ and $B$ are $n \times n$ matrices satisfying $AB = I_{n}$, then the rows of $A$ are linearly independent, and $r(A) = n$.
+\end{lemma}
+
+\begin{lemma}
+  If $A$ is an $n \times n$ matrix and $r(A) = n$, then there exists a matrix $C$ such that $CA = I_{n}$.
+\end{lemma}
+
+\begin{lemma}
+  If $A$ and $B$ are $n \times n$ matrices such that $AB = I_{n}$, then $BA = I_{n}$.
+\end{lemma}
+
+\begin{corollary}
+  A square matrix is invertible iff it can be transformed using elementary row operations to an upper triangular matrix with all diagonal element equal to $1$.
+\end{corollary}
+
+
+
+
+

@@ -1,0 +1,206 @@
+\section{Lectures 25-29}
+\subsection{Linear Transformations}
+\begin{definition}
+  A \vocab{transformation} is a function whose domain and range are vector spaces.
+\end{definition}
+
+To denote that $T$ is a transformation whose domain is $V$ and range is $W$, then we write $T : V \to W$.
+
+\begin{definition}
+  If $T : V \to W$, the \vocab{image} of $T$, denoted $image(T)$, is the subset of $W$ defined by
+  \begin{equation*}
+    image(T) = \left\{T(v) \mid \text{for some } v \in V\right\}.
+  \end{equation*}
+
+  In other words, the image of $T$ is the subset of $W$ consisting of all outputs of $T$.
+\end{definition}
+
+\begin{definition}[injectivity]
+  A transformation is \vocab{one-to-one (injective)} if $\forall v_{1}, v_{2} \in V$,
+  \begin{equation*}
+    T(v_{1}) = T(v_{2}) \implies v_{1} = v_{2}.
+  \end{equation*}
+\end{definition}
+
+\begin{definition}[surjectivity]
+  A transformation is \vocab{onto (surjective)} if $W = image(T)$. 
+
+  So $T$ is onto if every element of the range is in the image of $T$.
+\end{definition}
+
+\begin{definition}[Linear Transformations]
+  A transformation is \vocab{linear} if for all scalars $\alpha, \beta$, and for all vectors $v_{1}, v_{2} \in V$,
+  \begin{equation*}
+    T(\alpha v_{1} + \beta v_{2}) = \alpha T(v_{1}) + \beta T(v_{2}).
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}
+  If $A$ is an $n \times m$ matrix and $T : \RR^{m} \to \RR^{n}$ is defined by $T(v)$ is $A$ times $v$ (where $v$ is viewed as a column matrix), then $T$ is linear.
+\end{theorem}
+
+\begin{definition}
+  If $V$ is a vector space with basis $B = \left\{v_{1}, \dots, v_{n}\right\}$ and $v \in V$, let $(v)_{B}$ denote the column matrix consisting of the coordinates
+  of $v$ with respect to the basis $B$.
+
+  If $v = c_{1}v_{1} + \dots + c_{n}v_{n}$, then $(v)_{B} = \begin{bmatrix} c_{1} \\ \dots \\ c_{n} \end{bmatrix}$.
+\end{definition}
+
+\begin{lemma}
+  For any $n$-dimensional vector space $V$ with basis $B = \left\{v_{1}, \dots,  v_{n}\right\}$, the transformation $\phi : V \to \RR^{n}$ defined by
+  \begin{equation*}
+    \phi(v) = (v)_{B}
+  \end{equation*}
+  is linear, one-to-one, and onto.
+\end{lemma}
+
+\begin{theorem}
+  Let $V$ be a vector space with basis $B = \left\{v_{1}, \dots, v_{n}\right\}$ and $W$ be a vector space with basis $C = \left\{w_{1}, \dots, w_{n}\right\}$.
+
+  If $T : V \to W$ is linear, then there exists an $m \times n$ matrix $A$ such that for any $v \in V$,
+  \begin{equation*}
+    (T(v))_{C} = A(v)_{B}.
+  \end{equation*}
+\end{theorem}
+
+Keep in mind that in the previous theorem, the matrix $A$ is denoted more xplicitely as $A^{C}_{B}$,
+where $C$ is the chosen base for the range of the transformation while $B$ is the chosen basis of the domain of the transformation.
+
+\subsection{Change of Basis}
+\begin{theorem}
+  Let $V$ be a vector space with basis $B = \left\{v_{1}, \dots, v_{n}\right\}$ and $W$ be a vector with basis $C$.
+
+  If $T : V \to W$ is linaer, there exists an $m \times n$ matrix $A^{C}_{B}$ such that for any $v \in V$, $(T(v))_{C} = A^{C}_{B}(v)_{B}$.
+\end{theorem}
+
+For brevity, we will often refer to the matrix $A^{C}_{B}$ as $A$ from $B$ to $C$.
+
+\begin{corollary}
+  If $B$ and $C$ are two bases for the $n$-dimensional vector space $V$, then there exists an $n \times n$ matrix $P^{C}_{B}$ such that $\forall v \in V$,
+  \begin{equation*}
+    (v)_{C} = P^{C}_{B} (v)_{B}.
+  \end{equation*}
+\end{corollary}
+
+\begin{definition}
+  The matrix $P^{C}_{B}$ given in the previous corollary is often called \vocab{the transition matrix} from the $B$ basis to the $C$ basis of $V$.
+\end{definition}
+
+\begin{theorem}
+  If $B$ and $C$ are bases for the $n$-dimensional vector space $V$, then $P^{C}_{B}$ is invertible and $(P^{C}_{B})^{-1} = P^B_C$.
+\end{theorem}
+
+\begin{theorem}
+  Let $V$ be a vector space with bases $B$ and $C$, and $T : V \to V$ be linear. If $A^{B}_B$ denotes the matrix rep of $T$ with respect to basis $B$,
+  $A^{C}_{C}$ denotes the matrix rep of $T$ with respect to basis $C$, and $P^{C}_{B}$ denotes the transition matrix from basis $B$ to $C$, then
+  \begin{equation*}
+    P^{C}_{B} A^{B}_{B} = A^{C}_{C} P^{C}_{B}.
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}
+  Given two $n \times n$ matrices $\tilde{A}$ and $A$, $\tilde{A}$ is said to be \vocab{similar} to $A$ if $\exists$ an invertible matrix $P$ such that
+  \begin{equation*}
+    \tilde{A} = P^{-1} AP.
+  \end{equation*}
+\end{definition}
+
+$A$ is similar to $\tilde{A}$ iff $\tilde{A}$ is similar to $A$.
+
+\begin{theorem}
+  Let $V$ be a vector space with basis $B = \left\{v_{1}, \dots, v_{n}\right\}$, and $T : V \to V$ be linear with matrix rep $A$ with respecto to basis $B$.
+  If the matrix $\tilde{A}$ is similar to $A$, then there exists a basis $C$ such that the matrix representation of $T$ with respect to $C$ is $\tilde{A}$.
+\end{theorem}
+
+\subsection{Kernel and Image}
+\begin{definition}
+  Let $T : V \to W$ be a linear transition. The \vocab{kernel} of $T$, denoted $\ker(T)$, is the subset of $V$ defined by
+  \begin{equation*}
+    \ker(T) = \left\{v \in V \mid T(v) = 0\right\}.
+  \end{equation*}
+  \end{definition}
+
+  The kernel of $T$ is sometimes called the nullspace of $T$.
+
+\begin{theorem}
+  For any linear transformation $T : V \to W$,
+  \begin{enumerate}[(1)]
+    \item $0 \in \ker(T)$.
+    \item $\ker(T)$ is the subspace of $V$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+  The dimension of $\ker(T)$ is called the \vocab{nullity} of $T$. We will denote this by $null(T)$.
+\end{definition}
+
+\begin{definition}
+  The \vocab{image} of the transformation $T : V \to W$ is the subset of the range $W$ defined by
+  \begin{equation*}
+    image(T) = \left\{w \in W \mid w = T(v), \text{ for some } v \in V\right\}.
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}
+  For any linear transformation $T : V \to W$,
+  \begin{enumerate}[(1)]
+    \item $0_W \in image(T)$,
+    \item $image(T)$ is a subspace of $W$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+  The dimension of the image of $T$ is called the \vocab{rank} of $T$. The rank of $T$ is denoted $r(T)$.
+\end{definition}
+
+\begin{theorem}
+  Let $V$ be $n$-dimensiona, $W$ be $m$-dimensional, and $T : V \to W$ be linear.
+  Let $B$ and $C$ be bases for $V$ and $W$ respectively. If $A = A^{C}_{B}$ is the matrix representation of $T$ with respect to $B$ and $C$, then $r(T) = r(A)$.
+\end{theorem}
+
+\begin{theorem}
+  If $T : V \to W$ is linear and $V$ is finite dimensional, then
+  \begin{equation*}
+    r(T) + null(T) = \dim(V).
+  \end{equation*}
+\end{theorem}
+
+\begin{lemma}
+  Suppose $T : V \to W$ is linear and $V$ is $n$-dimensional. Let $\left\{v_{1}, \dots, v_{k}\right\}$ be a basis for $\ker(T)$.
+  If this  basis is extended to basis $\left\{v_{1}, \dots, v_{k}, v_{k + 1}, \dots, v_{n}\right\}$ for $V$,
+  then $\left\{Tv_{k + 1}, \dots, Tv_{n}\right\}$ is a basis for $image(T)$.
+\end{lemma}
+
+\begin{theorem}
+  Let $T : V \to W$ be linear. $T$ is one to one iff $\ker(T) = \left\{0\right\}$.
+\end{theorem}
+
+\begin{theorem}
+  Let $T : V \to W$ be linear. Suppose $\dim(V) = \dim(W) = n$. Then $T$ is one-to-one iff $T$ is onto.
+\end{theorem}
+
+\begin{definition}
+  A linear transformation that is both one-to-one and onto is called an \vocab{isomorphism}.
+
+  If $V$ and $W$ are vector spaces such that there exists an isomorphism $T : V \to W$, then $V$ is said to be \vocab{isomorphic} to $W$,
+  and this relation is denoted $V \cong W$.
+\end{definition}
+
+The isomorphic relation is reflexive, symmetric, and transitive. In other words,
+\begin{enumerate}[(1)]
+  \item $U \cong U$
+  \item $U \cong V \implies V \cong U$
+  \item $U \cong V$ and $V \cong W \implies U \cong W$
+\end{enumerate}
+
+\begin{definition}
+  A relation that is reflexive, symmetric, and transitive is called an \vocab{equivalence relation}.
+\end{definition}
+
+\begin{theorem}
+  If $V$ and $W$ are finite dimensional vector spaces, then $V \cong W$ iff $\dim(V) = \dim(W)$.
+\end{theorem}
+
+
+
+

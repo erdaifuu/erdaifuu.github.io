@@ -1,0 +1,182 @@
+\section{Lectures 16-20}
+\subsection{Subspaces}
+\begin{definition}
+  If $S$ is a subset of a vector space $V$, and $S$ is a vector space using the same operations of vector 
+  addition and scalar multiplication as defined for $V$, then $S$ is called a \vocab{subspace} of $V$.
+\end{definition}
+
+\begin{theorem}
+  Let $S$ be a nonempty subset of a vector space $V$, with vector addition and scalar addition denoted as usual,
+  then $S$ is a subspace of $V$ iff the following two conditions hold:
+  \begin{enumerate}[(1)]
+    \item \textbf{Closure under addition}: For all $u, v \in S$, $u \oplus v \in S$.
+    \item \textbf{Closure under scalar multiplication}: For all $u \in S$ and all scalars $\alpha$, $\alpha \odot u \in S$.
+  \end{enumerate}
+\end{theorem}
+
+Keep in mind that from now on, instead of using $\odot$ and $\oplus$, we will return to the regular notations
+for addition and multiplication.
+
+\begin{corollary}
+  A nonempty subset of $S$ of a vector space $V$ is a subspace of $V$ iff for all vectors $u, v \in S$ 
+  and all scalars $\alpha$ and $\beta$,
+  \begin{equation*}
+    au + bv \in S.
+  \end{equation*}
+\end{corollary}
+
+\begin{theorem}
+  If $S_{1}, \dots, S_{n}$ are subspaces of the vector space $V$, then 
+  \begin{equation*}
+    S = S_{1} \cap \dots \cap S_{n} = \left\{u \in V \mid u \in S_{i} \forall i\right\}
+  \end{equation*}
+  is a subspace of $V$.
+\end{theorem}
+
+\subsection{Span and Linear Combinations}
+\begin{definition}
+  Let $v_{1}, \dots, v_{n}$ be vectors in the vector space $V$.
+
+  For any scalars $\alpha_{1}, \dots, \alpha_{n}$, the vector $\alpha_{1}v_{1} + \dots + \alpha_{n}v_{n}$ 
+  is called \vocab{linear combination} of the vectors $v_{1}, \dots, v_{n}$.
+\end{definition}
+
+\begin{definition}
+  For a given set of vectors $\left\{v_{1}, \dots, v_{n}\right\}$, the \vocab{span} of this set of vectors
+  is the set of all linear combinations of $v_{1}, \dots, v_{n}$.
+  \begin{equation*}
+    span \left\{v_{1}, \dots, v_{n}\right\} = \left\{\alpha_{1}v_{1} + \dots + \alpha_{n}v_{n} \mid \alpha_{1}, \dots, \alpha_{n} \in \RR\right\}.
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}
+  If $S = \left\{v_{1}, \dots, v_{n}\right\}$ is a subset of the vector space $V$, then 
+  $span (S)$ is a subspace of $V$.
+\end{theorem}
+
+The span of a set is in some sense the smallest subspace containing the set.
+\begin{theorem}
+  Let $S$ be a nonempty subset of a vector space $V$.
+  \begin{enumerate}[(1)]
+    \item If $W$ is a subspace of $V$ and $S \subset W$, then $span (S) \subset W$.
+    \item $span (S)$ is the intersection of all subspaces of $V$ that contains $S$.
+  \end{enumerate}
+\end{theorem}
+
+\subsection{Linear Independence}
+\begin{definition}
+  A set of vectors $\left\{v_{1}, \dots, v_{n}\right\}$ in a vector space $V$ is \vocab{linearly dependent}
+  if there exists scalars $c_{1}, \dots, c_{n}$, not all zero, such that 
+  \begin{equation*}
+    c_{1}v_{1} + \dots + c_{n}v_{n} = 0.
+  \end{equation*}
+  Otherwise, the set fo vectors is \vocab{linearly independent}.
+
+  Equivalently, the set of vectors $\left\{v_{1}, \dots, v_{n}\right\}$ is linearly independent if for any scalars
+  $c_{1}, \dots, c_{n}$, 
+  \begin{equation*}
+    c_{1}v_{1} + \dots + c_{n}v_{n} = 0 \implies c_{1} = \dots = c_{n} = 0.
+  \end{equation*}
+\end{definition}
+
+\begin{remark}
+  In a theorem we shall prove later, we see that for all positive integers $n$, any set of vectors in 
+  $\RR^{n}$ with more than $n$ elements must be linearly dependent.
+\end{remark}
+
+\begin{theorem}
+  A finite set of nonzero vectors is linearly dependent iff for any ordering of elements in that set, 
+  one of the vectors is a linear combination of the vectors preceding it.
+\end{theorem}
+
+\begin{corollary}
+  Let $V$ be a vector space and $S = \left\{v_{1}, \dots, vln\right\} \subset V$. 
+  If $V = span(S)$, and $S$ is linearly dependent, then there is a subset $T$ of $S$ such that $T$
+  has $n - 1$ elements and $V = span(T)$.
+\end{corollary}
+
+\begin{corollary}
+  If $V = span(S)$ and $S$ has the minimal number of elements of all sets whose span is $V$, then
+  $S$ must be linearly independent.
+\end{corollary}
+
+\begin{theorem}
+  Let $V$ be a vector space.
+  \begin{enumerate}[(1)]
+    \item A subset of $V$ containing just one element $u$ is linearly dependent if and only if $u = 0$.
+    \item A subset of $V$ containing just two elements is linearly dependent iff one of the vectors
+      is a scalar multiple of the other.
+    \item Any subset of $V$ containing the zero vector is linearly dependent.
+  \end{enumerate}
+\end{theorem}
+
+  Linear independence passes to subsets and linear depdendence passes to supersets.
+\begin{theorem}
+  More precisely, let $V$ be a vector space and $S$ be a subset of $V$.
+  \begin{enumerate}[(1)]
+    \item If $S$ is linearly independent, then every subset of $S$ is linearly independent.
+    \item If $S$ is linearly dependent, then every set containing $S$ is also linearly dependent.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  If $S = \left\{v_{1}, \dots, v_{n}\right\}$ is a basis for the vector space $V$, then every linearly independent
+  set of vectors in $V$ must contain $n$ or fewer elements.
+\end{corollary}
+
+\subsection{Basis and Dimension}
+\begin{corollary}
+  For a given finite dimensional vector space $V$, every basis has the same number of elements.
+\end{corollary}
+
+\begin{definition}
+  The \vocab{dimension} for a finite dimensional vector space $V$ is the number of elements in the basis of $V$.
+  Denoted by $\dim(V)$.
+\end{definition}
+
+\begin{corollary}
+  In an $n$-dimensional vector space, every set with $n + 1$ or more elements must be linearly dependent.
+\end{corollary}
+
+\begin{remark}
+  By convention, the trivial vector space $\left\{0\right\}$ has no basis, so $\dim(\left\{0\right\}) = 0$.
+\end{remark}
+
+\begin{theorem}
+  If $S = \left\{v_{1}, \dots, v_{n}\right\}$ is a basis for the vector space $V$, then for any vector $u$
+  in $V$ there is only one way to write $u$ as a linear combination of $v_{1}, \dots, v_{n}$.
+  In other words, there exists a unique list of coefficients $c_{1}, \dots, c_{n}$ such that
+  \begin{equation*}
+    u = c_{1}v_{1} + \dots + c_{n}v_{n}.
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}
+  If $S = \left\{v_{1}, \dots, v_{n}\right\}$ is a basis for $V$ and $u = c_{1}v_{1} + \dots + c_{n}v_{n}$,
+  then the coefficients $c_{1}, \dots, c_{n}$ are called the \vocab{coordinates} of $u$ with respect to the basis $S$.
+\end{definition}
+
+The coordinates are often represented as an $n$-tuple, or as a column matrix with a subscript indicating the basis.
+  
+\begin{example}
+  The coordinate representation of $S$, a basis, with the coordinates $2, 1, -3$, is 
+  \begin{equation*}
+    \begin{bmatrix} 2 \\ 1 \\ 3 \end{bmatrix}_{S}.
+  \end{equation*}
+\end{example}
+
+\begin{theorem}
+  Let $V$ be a vector space of dimension $n$, and $S \subset V$.
+  \begin{enumerate}[(1)]
+    \item If $span(S) = V$, then some subset of $S$ is a basis of $V$.
+    \item If $S$ is linearly independent, then $S$ is a subset of some basis for $V$.
+  \end{enumerate}
+\end{theorem}
+
+Essentially, $(1)$ is stating that a basis of $V$ can be obtained by removing some elements from a spanning set of $V$,
+while $(2)$ is stating that a basis can be obtained by adjoining some elements to a linearly independent subset of $V$.
+
+
+
+
+

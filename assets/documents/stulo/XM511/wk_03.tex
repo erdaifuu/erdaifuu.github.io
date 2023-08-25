@@ -1,0 +1,134 @@
+\section{Lectures 12-15}
+\subsection{LU Decompositions}
+\begin{definition}
+  If a nonsingular matrix $A$ can be written as a product of a lower triangular matrix on the left, 
+  and an upper triangular matrix on the right, then $A$ is said to have an $LU$ decomposition.
+\end{definition}
+
+Let $R_{3}(i, j, k)$ denote the type three elementary row operation that adds to the $i$th row $k$ times the $j$th row,
+where $k \neq 0$ and $i \neq j$.
+
+\begin{lemma}
+  All diagonal elements of a nonsingular $n \times n$ lower triangular matrix $L$ must be nonzero.
+  In other words, if $L = \left[l_{i, j}\right]$, then $l_{r, r} \neq 0$.
+\end{lemma}
+
+\begin{theorem}
+  The nonsingular $n \times n$ matrix $A$ has an $LU$ decomposition iff $A$ can be transformed to an upper triangular matrix
+  using only elementary row operations of the form $R_{3} (i, j, k)$ where $i > j$.
+\end{theorem}
+
+\begin{proof}
+  If $A$ can be transformed to an upper triangular matrix $U$ using only elementary row operations of the form 
+  $R_{3}(i, j, k)$ where $i > j$, then there exists a sequence of lower triangular elementary matrices $E_{1}, \dots, E_{k}$
+  corresponding to those elementary row operations, such as 
+  \begin{equation*}
+    E_{k} \dots E_{1} A = U.
+  \end{equation*}
+  Each of these matrices is invertible, so $A = E^{-1}_{1} E^{-1}_{2} \dots E^{-1}_{k}U$.
+
+  Since the inverse of a nonsingular lower triangular matrix is lower triangular, 
+  and the product of lower triangular matrices is again lower triangular,
+  \begin{equation*}
+    A = LU,
+  \end{equation*}
+  where $L = E^{-1}_{1} E^{-1}_{2} \dots E^{-1}_{k}$ is lower triangular. 
+
+  This gives the desired $LU$ decomposition of $A$.
+\end{proof}
+
+If $A$ is nonsingular and $A = LU$, for some lower triangular matirx $L$ and upper triangular matrix $U$,
+the system $Ax = b$ can be solved first by solving $Ly = b$, then solving $Ux = y$.
+
+If $Ux = y$ and $Ly = b$, then 
+\begin{equation*}
+  Ax = LUx = Ly = b.
+\end{equation*}
+
+Refer to the text for detailed examples.
+
+\subsection{Vector Spaces}
+\begin{definition}
+  A \vocab{vector space} is a set $V$ of objects (vectors) and a set of scalars (either $\RR$ or $\CC$), 
+  together with 2 binary operations, vector addition $\oplus$ and scalar multiplication $\odot$, that
+  satisfy the following properties:
+  
+  \underline{Vector Addition}
+  \begin{enumerate}[(A1)]
+    \item \textbf{Closure}: For all $u, v \in V$, $u \oplus v \in V$.
+    \item [(A2)] \textbf{Commutativity}: For all $u, v \in V$, $u \oplus v = v \oplus u$.
+    \item [(A4)] \textbf{Associativity}: For all $u, v, w \in V$, $u \oplus (v \oplus w) = (u \oplus v) \oplus w$.
+    \item [(A4)] \textbf{Existence of an additive identity element}: There exists a zero vector in $V$, denoted $0$,
+      such that for all $u \in V$, $u \oplus 0 = u$.
+    \item [(A5)] \textbf{Existence of additive inverses}: For all $u \in V$, there exists a vector $-u \in V$ such that
+      $u \oplus (-u) = 0$ ($-u$ is called the additive inverse of $u$).
+  \end{enumerate}
+
+  \underline{Scalar Multiplication}
+  \begin{enumerate}[(S1)]
+    \item \textbf{Closure}: For all $u \in V$ and all scalars $\alpha$, $\alpha \odot u \in V$.
+    \item \textbf{Associativity}: For all $u \in V$ and all scalars $\alpha$ and $\beta$,
+      \begin{equation*}
+        \alpha \odot (\beta \odot u) = (\alpha \cdot \beta) \odot u.
+      \end{equation*}
+    \item \textbf{1 is an identity element}: For all $u \in V$, $1 \odot u = u$.
+    \item \textbf{Distributivity 1}: For all $u \in V$ and scalars $\alpha$ and $\beta$,
+      \begin{equation*}
+        (\alpha + \beta) \odot u = a \odot u \oplus \beta \odot u.
+      \end{equation*}
+    \item \textbf{Distributivity 2}: For all $u, v \in V$ and scalars $\alpha$,
+      \begin{equation*}
+        a \odot (u \oplus v) = a \odot u \oplus a \odot v.
+      \end{equation*}
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  If $\RR$ is the set of scalars for a given vector space, then that vector space is said to be a 
+  \vocab{real vector space}, or a vector space over $\RR$. 
+
+  Similarily, if the set of scalars is $\CC$, then the vector space is said to be a 
+  \vocab{complex vector space}, or a vector space over $\CC$.
+\end{definition}
+
+\subsection{Basic Vector Space Properties}
+\begin{theorem}
+  In any vector space, there is a unique additive identity element (zero vector).
+  More explicitly, in any vector space $V$, there exists a \vocab{unique} vector denoted 0,
+  such that $u \oplus 0 = u$ for all $u \in V$.
+\end{theorem}
+
+\begin{theorem}
+  For any vector space $V$ and any vector $u \in V$, there exists a \vocab{unique} $v \in V$ such that 
+  $u \oplus v = 0$.
+\end{theorem}
+
+\begin{lemma}
+  For any vector space $V$ and any vector $v \in V$, if $v \oplus v = v$, then $v = 0$.
+\end{lemma}
+
+\begin{theorem}
+  For any vector space $V$ and any vector $u \in V$, $0 \odot u = 0$.
+\end{theorem}
+
+\begin{theorem}
+  FOr any vector space $V$ and any scalar $\alpha$, $\alpha \odot 0 = 0$.
+\end{theorem}
+
+\begin{theorem}
+  For any vector space $V$ and any vector $u \in V$, $(-1) \odot u = -u$.
+\end{theorem}
+
+\begin{theorem}
+  For any vector space $V$ and any vector $u \in V$, $u = -(-u)$.
+\end{theorem}
+
+\begin{theorem}
+  For any vector space $V$, and for any scalar $\alpha$ and vector $u \in V$, if 
+  $a \odot u = 0$, then either $\alpha = 0$ or $u = 0$.
+\end{theorem}
+
+
+
+
+

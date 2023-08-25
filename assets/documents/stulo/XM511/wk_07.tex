@@ -1,0 +1,271 @@
+\section{Lectures 30-35}
+\subsection{Determinants}
+\begin{definition}
+  The \vocab{determinant}, denoted $\det$, is a function from the set of square matrices to the set of scalars defined recursively by the following rules:
+  \begin{itemize}
+    \item If $A$ is the $1 \times 1$ matrix $A = ;[a_{11}]$, then $\det(A) = a_{11}$.
+    \item If $A$ is an $n \times n$ matrix where $n > 1$, then
+      \begin{equation*}
+        \det(A) = \sum^{n}_{j = 1} (-1)^{1 + j} a_{1j} \det(\mu_{1j}(A)).
+      \end{equation*}
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  For a matrix $A = \left[a_{ij}\right]$, the scalar quantity $\det(\mu_{ij}(A))$ is called \vocab{a minor of} $A$, and 
+  \begin{equation*}
+    (-1)^{i + j} \det(\mu_{ij}(A)) 
+  \end{equation*}
+  is called the \vocab{cofactor} of $a_{ij}$.
+\end{definition}
+
+\begin{theorem}[Expansion by Cofactors]
+  For any $n \times n$ matrix $A$, $\det(A)$ can be computed as follows:
+  \begin{enumerate}[(1)]
+    \item Choose any one row or any one column of $A$.
+    \item Compute the cofactor of each element in the chosen row or column.
+    \item Multiply each element in the chosen row or column by its cofactor, and sum the results.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+  If $A$ has a zero row or zero column, then $\det(A) = 0$.
+\end{corollary}
+
+\begin{theorem}
+  If $A = \left[a_{ij}\right]$ is an upper triangular $n \times n$ matrix, then $\det(A)$ is the product of the diagonal elements
+  \begin{equation*}
+    \det(A) = a_{11}a_{22} \dots a_{nn}.
+  \end{equation*}
+\end{theorem}
+
+A similar result holds for lower triangular matrices.
+
+\begin{corollary}
+  If $D$ is a diagonal matrix with entries $d_{1}, d_{2}, \dots, d_{n}$, then
+  \begin{equation*}
+    \det(D) = d_{1}d_{2} \dots d_{n}.
+  \end{equation*}
+\end{corollary}
+
+\begin{theorem}[Geometric Properties of Determinants]
+  The area of the parallelogram $P$ determined by the vectors $(a_{1}, a_{2})$ and $(b_{1}, b_{2})$ in $\RR^{2}$ is given by the formula
+  \begin{equation*}
+    Area(P) = \left|\det \left( \begin{bmatrix} a_{1} & b_{1} \\ a_{2} & b_{2}\end{bmatrix} \right)\right|.
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+  Let $C$ be the $2 \times 2$ matrix representation of the linear transformation $T : \RR^{2} \to \RR^{2}$ with respect to the standard basis, and let $P$ denote
+  the parallelogram determined by the vectors $u$ and $v$ in $\RR^{2}$.
+
+  If $T(P)$ denotes the parallelogram determined by $T(u)$ and $T(v)$, then
+  \begin{equation*}
+    Area(T(P)) = \left|\det(C)\right| \cdot Area(P).
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+  For any square matrix $A$, $\det(A) = \det(A^{T})$.
+\end{theorem}
+
+\begin{remark}
+  Our goal for the next few lemmas is to eventually prove that ``determinants of a product is the product of the determinants''.
+\end{remark}
+
+\begin{lemma}
+  If $A$ is $n \times n$ and $E$ is an $n \times n$ elementary matrix corresponding to an elementary row operation that interchanges two rows, then $\det(E) = -1$ and
+  \begin{equation*}
+    \det(EA) = -\det(A) = \det(E)\det(A).
+  \end{equation*}
+\end{lemma}
+
+\begin{corollary}
+  If the square matrix $A$ has two identical rows or two identical columns, then $\det(A) = 0$.
+\end{corollary}
+
+\begin{lemma}
+  If $A$ is $n \times n$ and $E$ is the $n \times n$ elementary matrix corresponding to the elementary row operation that multiplies row $k$ by the nonzero scalar $\lambda$,
+  then $\det(E) = \lambda$ and
+  \begin{equation*}
+    \det(EA) = \lambda \det(A) = \det(E) \det(A).
+  \end{equation*}
+\end{lemma}
+
+\begin{corollary}
+  For any scalar $\lambda$ and $n \times n$ matrix $A$,
+  \begin{equation*}
+    \det(\lambda A) = \lambda^{n} \det(A).
+  \end{equation*}
+\end{corollary}
+
+\begin{lemma}
+  If $A$ is $n \times n$ and $E$ is the elementary matrix corresponding to the elementary row operation that adds $\lambda$ times  row $s$  to row $r$, then $\det(E) = 1$ and
+  \begin{equation*}
+    \det(EA) = \det(A) = \det(E)\det(A).
+  \end{equation*}
+\end{lemma}
+
+The three lemmas immediately imply
+\begin{theorem}
+  If $A$ is $n \times n$ and $E$ is an $n \times n$ elementary matrix, then
+  \begin{equation*}
+    \det(EA) = \det(E)\det(A).
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}
+  Let $A$ be a square matrix. $A$ is invertible iff $\det(A) \neq 0$.
+\end{theorem}
+
+\begin{theorem}
+  For any $n \times n$ matrices $A$ and $B$, $\det(AB) = \det(A)\det(B)$.
+\end{theorem}
+
+\begin{corollary}
+  If $A$ is an $n \times n$ invertible matrix, then $\det(A^{-1}) = (\det(A))^{-1}$.
+\end{corollary}
+
+\begin{corollary}
+  Similar matrices have the same determinants.
+\end{corollary}
+
+\subsection{Eigenvectors and Eigenvalues}
+\begin{definition}
+  Let $T : V \to V$ be linear. If $u$ is nonzero and $\lambda$ is a scalar such that $T(u) = \lambda u$, then $u$ is called an \vocab{eigenvector} of $T$, and
+  $\lambda$ is called an eigenvalue of $T$.
+\end{definition}
+
+\begin{theorem}
+  Let $V$ be finite dimensional and $T : V \to V$ be linear. There exists a basis $B$ of $V$ such that the matrix representation of $T$ with respect to $V$ is a diagonal
+  matrix iff there exists a basis of $V$ containing of only eigenvectors of $T$.
+\end{theorem}
+
+\begin{definition}[Eigenvectors and Eigenvalues from Matrices]
+  Let $A$ be an $n \times n$ matrix. If $x$ is a nonzero $n$-tuple in $\RR^{n}$ viewed as a column matrix and $\lambda$ is a scalar such that $Ax = \lambda x$,
+  then $x$ is called an \vocab{eigenvector} of $A$, and $\lambda$ is called an \vocab{eigenvalue} of $A$.
+\end{definition}
+
+\begin{theorem}
+  $u$ is an eigenvector with eigenvalue $\lambda$ for the linear transformation $T : V \to V$ iff for any basis $C$ of $V$ and matrix representation $A^{C}_{C}$ of $T$,
+  $(u)_{C}$ is an eigenvector $\lambda$ for the matrix $A^{C}_{C}$.
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    T(u) = \lambda u &\iff (T(u))_{C} = (\lambda u)_{C} \\ 
+                     &\iff (T(u))_{C} = \lambda \cdot (u)_{C} \\ 
+                     &\iff A^{C}_{C} (u)_{C} = \lambda \cdot (u)_{C}.
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  For a linear transformation $T : V \to V$ with eigenvalue $\lambda$, the set 
+  \begin{equation*}
+    S_{\lambda} = \left\{v \in V \mid T(v) = \lambda v\right\}
+  \end{equation*}
+  which equals $\left\{0\right\} \cup \left\{v \in V \mid v \text{ is an eigenvector with eigenvalue } \lambda\right\}$.
+\end{theorem}
+
+\begin{definition}
+  For a transformation $T : V \to V$ with eigenvalue $\lambda$,
+  \begin{equation*}
+    S_{\lambda} = \left\{v \in V \mid T(v) = \lambda v\right\}
+  \end{equation*}
+  which equals $\left\{0\right\} \cup \left\{v \in V \mid v \text{ is an eigenvector with eigenvalue } \lambda\right\}$, is called the \vocab{eigenspace} of $T$ for the eigenvalue $\lambda$.
+\end{definition}
+
+\subsection{Finding Eigenvectors and Eigenvalues}
+\begin{theorem}
+  $\lambda$ is an eigenvalue of the $n \times n$ matrix $A$ iff $\det(A - \lambda I_{n}) = 0$.
+\end{theorem}
+
+\begin{definition}
+  The equation $\det(A - \lambda I_{n}) = 0$ is called the \vocab{characteristic equation} of the matrix $A$.
+\end{definition}
+
+If 
+\begin{equation*}
+  A = \begin{bmatrix}
+    a_{11} & a_{12} & \dots & a_{1n} \\
+    a_{21} & a_{22} & \dots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \dots & a_{nn}
+  \end{bmatrix},
+\end{equation*}
+then 
+\begin{equation*}
+    A - \lambda I_{n}  =
+\begin{bmatrix}
+    a_{11} - \lambda & a_{12} & \dots & a_{1n} \\
+    a_{21} & a_{22} - \lambda & \dots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \dots & a_{nn} - \lambda
+  \end{bmatrix},
+\end{equation*}
+
+\begin{example}
+  Let $A = \begin{bmatrix}
+    1 & 2 \\ -4 & 7
+  \end{bmatrix}$. Find all eigenvalues of $A$ and each corresponding eigenspace.
+
+
+  To do this, we need to solve the characteristic equation $\det(A - \lambda I_{n}) = 0$.
+  \begin{equation*}
+    A - \lambda I_{2} = \begin{bmatrix}
+      1 - \lambda & 2 \\ -4 & 7 - \lambda.
+    \end{bmatrix}
+  \end{equation*}
+  Solving this, we get the determinant as $(\lambda - 3) ( \lambda - 5)$, and so this has solutions $\lambda = 3$ and $\lambda = 5$, implying they are the eigenvalues of $A$.
+
+  To find the eigenspace of $3$, we must find all $x$ such that $Ax = 3x$. So we solve the matrix equation $(A - 3 I_{2})x = 0$.
+  We see that this equation is solved iff $x_{1} = x_{2}$, so $\begin{bmatrix}
+    1 \\ 1
+  \end{bmatrix}$ is one eigenvector with eigenvalue $3$, and it is the basis for the eigenspace $S_{3}$.
+\end{example}
+
+\subsection{Properties of Eigenvectors and Eigenvalues}
+\begin{theorem}
+  If $A$ and $B$ are similar $n \times n$ matrices, then they have the same characteristic equation and therefore the same eigenvalues.
+\end{theorem}
+
+\begin{theorem}
+  For an upper or lower triangular matrix, the eigenvalues are the diagonal elements.
+\end{theorem}
+
+\begin{theorem}
+  An $n \times n$ matrix $A$ is singular iff it has a zero eigenvalue.
+\end{theorem}
+
+For the theorem ``The following statements are equivalent for an $n \times n$ matrix $A$'', we can now add ``every eigenvalue of $A$ is nonzero'' to the list.
+For the theorem ``
+\begin{theorem}
+  Let $A$ be invertible. If $x$ is an eigenvector of $A$ with eigenvalue $\lambda$, then $x$ is an eigenvector of $A^{-1}$ with eigenvalue $\frac{1}{\lambda}$.
+\end{theorem}
+
+\begin{theorem}
+  If $x$ is an eigenvector of $A$ with eigenvalue $\lambda$, then
+  \begin{enumerate}
+    \item For each scalar $k$, $x$ is an eigenvector of $kA$ with eigenvalue $k \lambda$.
+    \item For each positive integer $n$, $x$ is an eigenvector of $A^{n}$ with eigenvalue $\lambda^{n}$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+  If $A = \left[a_{ij}\right]$ is an $n \times n$ matrix, then the \vocab{trace} of $A$, denoted $tr(A)$, is the scalar defined by
+  \begin{equation*}
+    tr(A) = \sum^{n}_{i = 1} a_{ii}.
+  \end{equation*}
+  So the trace of $A$ is the sum of its diagonal elements.
+\end{definition}
+
+\begin{theorem}
+  Suppose $A$ is an $n \times n$ matrix with eigenvalues $\lambda_{1}, \dots, \lambda_{n}$ listed with multiplicity,
+  \begin{enumerate}
+    \item $tr(A) = \lambda_{1} + \lambda_{2} + \dots + \lambda_{n}$.
+    \item $\det(A) = \lambda_{1} \lambda_{2} \dots \lambda_{n}$.
+  \end{enumerate}
+\end{theorem}
+
+
+

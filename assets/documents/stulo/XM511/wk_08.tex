@@ -1,0 +1,37 @@
+\section{Lectures 36-37}
+\subsection{Diagonalization}
+\begin{definition}
+  A square matrix is \vocab{diagonalizable} if it is similar to a diagonal matrix.
+\end{definition}
+
+\begin{theorem}
+  An $n \times n$ matrix $A$ is diagonalizable iff it has $n$ linearly independent eigenvectors.
+\end{theorem}
+
+\begin{theorem}
+  If $A$ is similar to the diagonal matrix $D_{1}$ and $A$ is similar to the diagonal matrix $D_{2}$, then $D_{1}$ and $D_{2}$ have the same set of diagonal
+  elements and each such element occurs with the same multiplicity in $D_{1}$ as it does in $D_{2}$.
+\end{theorem}
+
+\begin{theorem}
+  Let $A$ be a square matrix. For each positive integer $k$, if $x_{1}, \dots, x_{k}$ are eigenvectors of $A$ with distinct eigenvalues $\lambda_{1}, \dots, \lambda_{k}$ 
+  respectively, then $\left\{x_{1}, \dots, x_{k}\right\}$ is linearly independent.
+\end{theorem}
+
+\begin{corollary}
+  If $A$ is $n \times n$ and $A$ has $n$ distinct real eigenvalues (given by $n$ distinct roots of the characteristic equation of $A$), then $A$ is diagonalizable.
+\end{corollary}
+
+\begin{theorem}
+  Let $A$ be an $n \times n$ matrix whose real eigenvalues are $\lambda_{1}, \dots, \lambda_{k}$, and for each $j$,
+  let $S_{\lambda_{j}}$ denote the eigenspace for the eigenvalue $\lambda_{j}$.
+
+  $A$ is diagonalizable iff $\sum^{k}_{j = 1} \dim(S_{\lambda_{j}}) = 1$.
+\end{theorem}
+
+\begin{theorem}
+  If $\lambda$ is an eigenvalue of the $n \times n$ matrix $A$, then 
+  \begin{equation*}
+    \dim(S_{\lambda}) = n - r(A - \lambda I_{n}).
+  \end{equation*}
+\end{theorem}

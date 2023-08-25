@@ -1,0 +1,225 @@
+\section{Lectures 7-11}
+
+\subsection{Linear Systems of Equations}
+\begin{definition}
+  A system of $m$ linear equations in $n$ variables $x_{1}, \dots, x_{n}$ is a set of equations in the form:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.4]{02f3.png}
+  \end{figure}
+  where the coefficients $a_{i, j}$ and the quantities $b_{i}$ are known scalars.
+\end{definition}
+
+\begin{definition}
+  A \vocab{solution to a system} of $m$ linear equations in the variables $x_{1}, \dots, x_{n}$
+  is an assignment of scalar values to $x_{1}, \dots, x_{n}$ that, when substituted into each equation of the system,
+  makes each equation true.
+\end{definition}
+
+A system can be written as the matrix equation
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 0.3]{02f1.png}
+\end{figure}
+
+\begin{lemma}
+  If $B$ and $C$ are matrices such that $BC$ is defined, and if $\lambda$ is any scalar, then 
+  \begin{equation*}
+    \lambda (BC) = B(\lambda C).
+  \end{equation*}
+\end{lemma}
+
+\begin{theorem}
+  Suppose $x_{1}$ and $x_{2}$ are two distinct solutions to the matrix equation $Ax = b$.
+  If $\alpha$ and $\beta$ are two real numbers with $\alpha + \beta = 1$, then 
+  \begin{equation*}
+    \alpha x_{1} + \beta x_{2}
+  \end{equation*}
+  is also a solution to $Ax = b$.
+\end{theorem}
+
+\begin{corollary}
+  A system of linear equations has either $0$, $1$, or infinitely many solutions.
+\end{corollary}
+
+Think of this as two lines: either the lines don't intersect, or they intersect at one point, or they interset at infinitely many points.
+
+\begin{definition}[Consistency]
+  A system of linear equations is \vocab{consistent} if it has at least one solution.
+  Otherwise, it is \vocab{inconsistent}.
+\end{definition}
+
+\begin{definition}[Homogeneity]
+  A system of linear equations corresponding to the matrix equation $Ax = b$ is \vocab{homogeneous} if $b = 0$.
+  Otherwise, if $b \neq 0$, the system is \vocab{inhomogeneous}.
+\end{definition}
+
+Below is a homogeneous system of $m$ linear equations in $n$ variables:
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 0.4]{02f2.png}
+\end{figure}
+
+\begin{definition}
+  The solution $x = 0$ to the homogeneous system $Ax = 0$ is called the \vocab{trivial solution}.
+\end{definition}
+
+The trivial solution makes every homogeneous system consistent.
+
+\subsection{Gaussian Elimination}
+If $S$ is the set of solutions to a system of linear equations, and $S^{\prime}$ is the set of solutions to the new 
+system of equations altered by elementary row operations, then $S = S^{\prime}$.
+
+\begin{definition}
+  For a system of linear equations with matrix representation $Ax = b$, the \vocab{augmented matrix of the system}
+  is the partitioned matrix $\left[A \mid b\right]$.
+\end{definition}
+
+\begin{definition}
+  These matrix operations are called \vocab{elementary row operations}:
+  \begin{enumerate}[R1.]
+    \item Interchanging two rows in a matrix.
+    \item Multiplying a row of matrix by a nonzero scalar.
+    \item Adding to one row of a matrix a scalar times another row of the same matrix.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Gaussian Elimination]
+  Gaussian Elimination is a procedure that uses elementary row operations on an augmented matrix to reduce
+  a system of equations.
+
+  Gaussian Elimination has $4$ steps:
+  \begin{enumerate}
+    \item Construct the augmented matrix from the given system of equations.
+    \item Use elementary row operations to transform the augmented matrix into an augmented matrix in row-reduced form.
+    \item Write the equations corresponding to the resulted augmented matrix.
+    \item Solve the new set of equations by back-substitution.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  The set of equations alluded to in step $3$ is called the \vocab{derived set}.
+\end{definition}
+
+Back-substitution means that, starting with the last equation, solve for the first variable with a non-zero coefficient.
+Next, substitute this value into the other equations.
+
+\begin{remark}
+  If at any time the augmented matrix has a row that is zero except for the last entry, then the derived set will
+  contain an equation that is never true. In this case, the system of equations is inconsistent.
+\end{remark}
+
+Sometimes, the systems would have infinitely many solutions in term of a particular variable, which can be
+expressed as a column matrix. 
+\begin{example}
+  The system of equations $x = -14 + 12z$, $y = 2 - 4z$, and $z = z$, can be represented by
+  \begin{equation*}
+    x = \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} -14 + 12z \\ 2 - 4z \\ z \end{bmatrix}.
+  \end{equation*}
+\end{example}
+
+In the solutions, $z$ is unrestricted because it is not the first variable with non-zero coefficient in any of the equations.
+
+\subsection{Matrix Inverses}
+\begin{definition}
+  A \vocab{multiplicative inverse} of an $n \times n$ matrix $A$ is an $n \times n$ matrix $B$ such that
+  \begin{equation*}
+     AB = BA = I_{n}.
+  \end{equation*}
+\end{definition}
+
+Keep in mind that $B$ is an inverse of $A$ iff $A$ is an inverse of $B$.
+
+\begin{theorem}
+  If $A$ and $B$ are any two $n \times n$ matrices with $AB = I_{n}$, then $BA = I_{n}$.
+\end{theorem}
+
+\begin{theorem}[Uniqueness]
+  If $A$ is an $n \times n$ matrix and both $B$ and $C$ are inverses of $A$, then $B = C$.
+\end{theorem}
+
+Keep in mind that the unique inverse of a matrix $A$ is denoted $A^{-1}$.
+
+\begin{definition}
+  A square matrix that has an inverse is said to be \vocab{invertible or nonsingular}.
+
+  A matrix that does not have an inverse is said to be \vocab{singular}.
+\end{definition}
+
+\begin{theorem}
+  If $A$ and $B$ are $n \times n$ invertible matrices, then
+  \begin{enumerate}
+    \item $\left(A^{-1}\right)^{-1} = A$.
+    \item $\left(AB\right)^{-1} = B^{-1}A^{-1}$.
+    \item $\left(A^{T}\right)^{-1} = \left(A^{-1}\right)^{T}$.
+    \item $\left(\lambda A\right)^{-1} = \left(1/\lambda\right)A^{-1}$, if $\lambda$ is any non-zero scalar.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  Let $A$ be an $n \times n$ matrix, and $b$ be an $n \times 1$ column matrix. 
+  If $A$ is invertible, then the unique solution to the matrix equation $Ax = b$ is
+  \begin{equation*}
+    x = A^{-1}b.
+  \end{equation*}
+\end{theorem}
+
+\subsection{Computing Inverses with Elementary Matrices}
+\begin{definition}
+  An \vocab{elementary matrix $E$} is a square matrix that when multiplying a matrix $A$ on the left has the 
+  same effect as applying an elementary row operation to $A$.
+\end{definition}
+
+\begin{theorem}
+  For $n \times n$ matrices there exists a unique elementary matrix for a given elementary row operation, and these
+  elementary matrices are invertible. Furthermore,
+  \begin{enumerate}
+    \item The inverse of the $n \times n$ elementary matrix that interchanges two rows is the elementary matrix itself.
+    \item The inverse of the $n \times n$ elementary matrix that multiplies one row by a non-zero scalar $k$
+      is the matrix obtained by replacing the scalar $k$ in the elementary matrix by $1/k$.
+    \item The inverse of the $n \times n$ elementary matrix that adds to one row a constant $k$ times another
+      row is the matrix obtained by replacing the scalar $k$ in the elementary matrix by $-k$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+  A square matrix is invertible iff if it can be transformed by elementary row operations into a row-reduced matrix
+  with all the diagonal entries nonzero.
+\end{lemma}
+
+\begin{lemma}
+  Any square matrix with row-reduced form having all diagonal elements nonzero can be transformed by elementary
+  row operations to the identity matrix.
+\end{lemma}
+
+\begin{theorem}
+  An $n \times n$ matrix is invertible iff there exists a sequence of elementary matrices $E_{1}, E_{2}, \dots, E_{k}$
+  such that 
+  \begin{equation*}
+    E_{k}E_{k - 1}\dots E_{2}E_{1}A = I_{n}.
+  \end{equation*}
+  Furthermore, the product of these elementary matrices equal the inverse of $A$.
+\end{theorem}
+
+To compute $A^{-1}$, transform the identity matrix using the same sequence of elementary row operations that were
+used to transform $A$ to the identity,
+
+\begin{theorem}[Computing Inverses]
+  To find the inverse of the $n \times n$ matrix $A$,
+  \begin{enumerate}[1.]
+    \item Form the augmented matrix $\left[A \mid I_{n}\right]$.
+    \item Use elementary row operations on this augmented matrix to transform the left partition to 
+      row-reduced form, applying each operation to the full augmented matrix.
+    \item Check: If the left partition of the row-reduced matrix has any zero elements on its main diagonal, then
+      $A$ is not invertible. Otherwise, proceed to step $4$.
+    \item Use elementary row operationso nt he row reduced augmented matrix to transform the left partition to $I_{n}$,
+      applying each operation to the full augmented matrix.
+
+      $A^{-1}$ is the right partition of the final augmented matrix.
+  \end{enumerate}
+\end{theorem}
+
+
+
+
+

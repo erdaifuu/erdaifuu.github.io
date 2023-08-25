@@ -1,0 +1,388 @@
+\section{Lecture 1-6}
+\subsection{Matrices}
+
+\begin{definition}
+  A \vocab{matrix} is a rectangular array whose elements are arranged in horizontal rows and vertical columns.
+\end{definition}
+
+$\begin{pmatrix}
+  \centering
+  2 & 3 & 9 \\
+  -3 & \pi & \sqrt{2}
+\end{pmatrix}$
+
+\begin{remark}
+  The entries in a matrix are called the \vocab{elements} of the matrix.
+\end{remark}
+
+Throughout the course, matrices will be denoted with uppercase letters.
+
+\begin{definition}
+  If $p$ and $n$ are positive integers and the matrix $A$ has $p$ rows and $n$ columns, 
+  the $A$ has \vocab{order} ``$p$ by $n$''. written $p \times n$. 
+  In this case $A$ is said to be a $p \times n$ matrix.
+\end{definition}
+
+The elements in the $i$\textsuperscript{th} row and the $j$\textsuperscript{th} column of $A$ 
+can be written as $A_{i, j}$.
+
+\begin{remark}
+  \begin{enumerate}
+    \item The elemnt of $A$ in the $i$th row and $j$th column is often said to have ``row index'' equal to i
+      and ``column index'' equal to $j$.
+    \item The comma between the subscripts of $a_{i, j}$ is often suppressed.
+  \end{enumerate}
+\end{remark}
+
+\begin{definition}
+  A \vocab{square matrix} is a matrix with the same number of rows as columns.
+\end{definition}
+
+If $A$ is a square matrix, then the order of $A$ is either $1 \times 1$ or $n \times n$.
+
+\begin{definition}
+  If $A = \left[a_{i, j}\right]$ is a square $n \times n$ matrix, then the elements $a_{1,1}$, $a_{2,2}, \dots, a_{n,n}$
+  are said to form the \vocab{main (or principal) diagonal}, and each of these elements are called the
+  \vocab{diagonal element of $A$}.
+\end{definition}
+
+\begin{remark}
+ Even if the matrix $A$ is not square, any element of $A$ where the row index equal the column index is called a 
+ diagonal element.
+\end{remark}
+
+\begin{definition}
+  A \vocab{row matrix} is a matrix with only one row, and a \vocab{column matrix} is a matrix with only one column.
+\end{definition}
+
+\begin{definition}
+  The elements of a row or a column matrix are called its \vocab{components}, and the number of components is called its \vocab{dimension}.
+\end{definition}
+
+\begin{definition}
+  A row or column matrix of dimension $n$ is called a \vocab{n-tuple}.
+\end{definition}
+
+\begin{definition}
+  Two matrices $A$ and $B$ are \vocab{equal} if $A$ and $B$ have the same order and their corresponding elements are equal.
+
+  More precisely, $A = B$ means that there are positive integers $p$ and $n$ such that:
+  \begin{enumerate}[(i)]
+    \item (Number of rows of $A$) $= p = $ (number of rows of $B$)
+    \item (number of columns of $A$) $= n =$ (number of columns of $B$)
+    \item $A_{i, j} = B_{i, j}$
+  \end{enumerate}
+\end{definition}
+
+\subsection{Matrix Addition and Scalar Multiplication}
+\begin{definition}
+  Let $A$ and $B$ be matrices both of order $p \times n$.
+  Their \vocab{sum}, $A + B$, is the $p \times n$ matrix defined by
+  \begin{equation*}
+    \left(A + B\right)_{i, j} = A_{i, j} + B_{i, j}
+  \end{equation*}
+  for $i = 1, 2, \dots, p$ and $j = 1, 2, \dots, n$.
+\end{definition}
+
+Matrix addition is defined elementwise. 
+For example, adding two matrices are just adding their elements.
+
+\begin{theorem}
+  Let $A$, $B$ and $C$ be matrices of order $p \times n$.
+  \begin{enumerate}
+    \item $A + B = B + A$. (Commutativity)
+    \item $A + (B + C) = (A + B) + C$. (Associativity)
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  For $(1)$, suppose $i$ and $j$ are integers with $1 \leq i \leq p$ and $1 \leq j \leq n$. Then,
+    \begin{align*}
+      (A + B)_{i, j} &= A_{i, j} + B_{i, j} \\ 
+                     &= B_{i, j} + A_{i, j} \\ 
+                     &= (B + A)_{i, j}.
+    \end{align*}
+  Therefore, 
+  \begin{equation*}
+    (A + B)_{i, j} = (B + A)_{i, j}, 
+  \end{equation*}
+  and since their corresponding elements are equal, $A + B = B + A$.
+\end{proof}
+
+\begin{definition}
+  A \vocab{zero matrix} is a matrix all of whose entries are zero. 
+  The unique zero matrix of order $p \times n$ is denoted $0_{p \times n}$.
+\end{definition}
+
+Zero matrices are identity elements for matrix addition.
+
+\begin{theorem}
+  If $A$ has order $p \times n$, then $A + 0_{p \times n} = A$.
+\end{theorem}
+
+Matrix subtraction is defined elementwise.
+
+\begin{remark}
+  If $A$ and $B$ do not have the same orders, then both their sum $A + B$ and their difference $A - B$ aren't defined.
+\end{remark}
+
+\begin{definition}
+  Let $A$ be a $p \times n$ matrix of real numbers.
+
+  For any real number $\lambda$, \vocab{scalar multiplication of $A$ by $\lambda$}, denoted $\lambda A$, 
+  is the matrix defined by 
+  \begin{equation*}
+    (\lambda A)_{i, j} = \lambda A_{i, j}.
+  \end{equation*}
+\end{definition}
+
+Again, scalar multiplication is also defined elementwise.
+
+\begin{remark}
+  \begin{enumerate}
+    \item When used to multiply a matrix, the number $\lambda$ is often called a scalar.
+    \item If the elements of $A$ are viewed as complex numbers, then the matrix $\lambda A$ is defined for any complex number $\lambda$.
+  \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+  If $A$ and $B$ are matrices of order $p \times n$ and if $\lambda_{1}$ and $\lambda_{2}$ are scalars, then
+  \begin{enumerate}
+    \item $\lambda_{1}(A + B) = \lambda_{1} A + \lambda_{1} B$
+    \item $(\lambda_{1} + \lambda_{2})A = \lambda_{1} A + \lambda_{2} A$
+    \item $(\lambda_{1} \lambda_{2})A = \lambda_{1} (\lambda_{2}A)$
+  \end{enumerate}
+\end{theorem}
+
+\subsection{Matrix Multiplication}
+\begin{definition}
+  Let $p$, $r$, and $n$ be positive integers, $A = \left[a_{i, j}\right]$ be a $p \times r$ matrix, 
+  and $B = \left[b_{i, j}\right]$ be an $r \times n$ matrix. The \vocab{product matrix}, $AB$, is the $p \times n$ 
+  matrix $C = \left[c_{i, j}\right]$ defined by
+  \begin{equation*}
+    c_{i, j} = \sum^{r}_{k = 1} a_{i, k}b_{k, j}.
+  \end{equation*}
+\end{definition}
+
+\begin{remark}
+  \textbf{ }
+  \begin{enumerate}
+    \item Unlike matrix addition, subtraction, and scalar multiplication, this is not elementwise.
+    \item For the product to be defined, the number of columns of $A$ must equal the number of rows of $B$.
+      This number is the \vocab{upper limit of the summation} in the definition of $c_{i, j}$.
+    \item If defined, $AB$ has the same number of \textbf{rows as $A$} and \textbf{columns as $B$}.
+  \end{enumerate}
+\end{remark}
+
+ $c_{i, j}$ is obtained by multiplying each element in the $i$th row of $A$ by the corresponding element in the 
+ $j$th column of $B$, then summing the results. 
+
+ Matrix multiplication is also not commutative. 
+ For any positive integers $p$, $r$, and $n$, if $A$ and $B$ are matrices of orders $p \times r$ and $r \times n$
+ respectively, then $AB$ is defined.
+
+ However, this does not work very well in terms of commutativity, and even if $AB$ and $BA$ are both defined, they
+ might not be equal.
+
+ \begin{corollary}
+   For any integer $n \geq 2$, there exists $n \times n$ matrices $A$ and $B$ such that $AB \neq BA$.
+ \end{corollary}
+
+ \begin{corollary}
+   There exist matrices $A$, $B$, and $C$ such that $AB = AC$, but $B \neq C$.
+ \end{corollary}
+
+Keep in mind that the product of two non zero matrices may be 0.
+
+           \begin{theorem}
+             For any matrices $A$, $B$, and $C$, 
+             \begin{enumerate}
+               \item $A(BC) = (AB)C$ 
+               \item $A(B + C) = AB + AC$, and $(B + C)A = BA + CA$
+             \end{enumerate}
+             assuming in each case the multiplication and additions are defined.
+           \end{theorem}
+
+\begin{proof}
+  For the second one, let $A = \left[a_{i, j}\right]$, $B = \left[b_{i, j}\right]$, and $C = \left[c_{i, j}\right]$. 
+  By the definition of matrix addition, $(B + C)_{i, j} = b_{i, j} + c_{i, j}$.  
+  Then, by the definition of matrix multiplication,
+  \begin{align*}
+    (A (B + C))_{i, j} &= \sum^{r}_{k = 1} a_{j, k} (b_{k, j} + c_{k, j}) \\ 
+                       &= \sum^{r}_{k = 1} (a_{i, k}b_{k, j} + a_{i, k}c_{k, j}) \\
+                       &= \sum^{r}_{k = 1}a_{i, k}b_{k, j} + \sum^{r}_{k = 1}a_{i, k}c_{k, j} \\ 
+                       &= (AB)_{i, j} + (AC)_{i, j} \\
+                       &= (AB + AC)_{i, j}.
+  \end{align*}
+  Since their corresponding elements are equal, $A(B + C) = AB + AC$.
+\end{proof}
+
+Matrix multiplicaiton allows a set of simultaneous linear equations to be written as one matrix equation. 
+
+\begin{example}
+  Consider the system of equations
+  \begin{align*}
+    2x + 3y &= 6 \\ 
+    -x + 7y = 4
+  \end{align*}
+  can be represented by 
+  \begin{equation*}
+    A = \begin{pmatrix} 2 & 3 \\ -1 & 7 \end{pmatrix}, v = \begin{pmatrix} x \\ y \end{pmatrix}, \text{ and } b = \begin{pmatrix}     6 \\ 4 \end{pmatrix}.
+  \end{equation*}
+  $Av = b$ iff the equation is true as a result.
+\end{example}
+
+\subsection{Transpose and Symmetry}
+\begin{definition}
+  If $A$ is a $p \times n$ matrix, then the \vocab{transpose} of $A$, denoted $A^{T}$, is the $n \times p$ matrix defined by
+  \begin{equation*}
+    \left(A^{T}\right)_{i, j} = A_{j, i}.
+  \end{equation*}
+  Or, $A^{T}$ is obtained by switching the rows and columns of $A$.
+\end{definition}
+
+ $A^{T}$ is often referred to as ``$A$ transpose''.
+
+ \begin{theorem}
+   For any scalar $\lambda$ and for any matrices $A$ and $B$, 
+   \begin{enumerate}
+     \item $\left(A^{T}\right)^{T} = A$
+     \item $\left(\lambda A\right)^{T} = \lambda A^{T}$
+     \item $\left(A + B\right)^{T} = A^{T} + B^{T}$
+     \item $\left(AB\right)^{T} = B^{T}A^{T}$.
+   \end{enumerate}
+ \end{theorem}
+
+Keep in mind of the fourth property, as matrix multiplication is not commutative. 
+It's important to pay attention to the order.
+
+\begin{proof}
+  For statement $4$, suppose $A$ has order $p \times r$ and $B$ has order $r \times n$.
+  \begin{align*}
+    \left( \left(AB\right)^{t}\right)_{i, j} &= \left(AB\right)_{j, i} \\ 
+                                             &= \sum^{r}_{k = 1} A_{j, k} B_{k, i} \\ 
+                                             &= \sum^{r}_{k = 1} \left(A^{T}\right)_{k, j} \left(B^{T}\right)_{i, k} \\ 
+                                             &= \left(B^{T}A^{T}\right)_{i, j}.
+  \end{align*}
+\end{proof}
+
+The positive integrals of $A$ is defined as one would expect.
+
+\begin{corollary}
+  For any positive integer $n$ and square matrix $A$, 
+  \begin{equation*}
+    \left(A^{n}\right)^{T} = \left(A^{T}\right)^{n}.
+  \end{equation*}
+\end{corollary}
+
+\begin{definition}
+  A matrix $A$ is \vocab{symmetric} if $A^{T} = A$. 
+
+  It is easy to observe that $A$ is symmetric iff $A$ is square and the elements of $A$ satisfy $A_{i, j} = A^{j, i}$.
+\end{definition}
+
+\begin{definition}
+  A \vocab{diagonal matrix} is a square matrix having only zeros as nondiagonal elements.
+
+  More explicitely, the square matrix $A$ is diagonal if $A_{i, j} = 0$ whenever $i \neq j$.
+\end{definition}
+
+\begin{definition}
+  An \vocab{identity matrix} is a diagonal matrix having all its diagonal elements equal to $1$. 
+  The unique $n \times n$ identity matrix is denoted $I_{n}$.
+\end{definition}
+
+Keep in mind that if $A$ is any $n \times n$ matrix, then $AI_{n} = I_{n}A = A$.
+
+\begin{remark}
+  Keep in mind for any nonzero real number $x$, 
+  \begin{equation*}
+    x^{0} = 1.
+  \end{equation*}
+  Similarily, for any $n \times n$ nonzero matrix $A$, define
+  \begin{equation*}
+    A^{0} = I_{n}.
+  \end{equation*}
+\end{remark}
+
+\begin{definition}
+  A matrix $A$ is \vocab{skew symmetric} if $A^{T} = -A$. 
+
+  $A$ is skew symmetric iff $A$ is square and the elements of $A$ satisfy $A_{j, i} = -A_{i, j}$.
+\end{definition}
+
+\begin{corollary}
+  A skew-symmetric matrix must have all diagonal elements equal to 0.
+\end{corollary}
+
+\subsection{Partitions and Special Forms of Matrices}
+\begin{definition}
+  A \vocab{submatrix} of a matrix $A$ is any matrix obtained by removing any number of rows or columns from $A$.
+\end{definition}
+
+Just think of a subset, they work the same wway!
+
+\begin{definition}
+  A matrix is \vocab{partitioned} if it is divided into submatrices byhorizontal and vertical lines between rows and columns.
+\end{definition}
+
+\begin{definition}
+  A \vocab{block} of a partitioned matrix $A$ is a submatrix of $A$ bounded by two consecutive horizontal partition lines,
+  and two consecutive vertical partition lines.
+\end{definition}
+
+Viewing a matrix as partitioned into blocks can be helpful in carrying out certain computations. 
+For example, one could see the blocks as a single element to multiply two matrices with different dimensions.
+
+\begin{definition}
+  A \vocab{symmetrically partitioned matrix} is a square matrix that is partitioned in such a way that the vertical 
+  partition lines are in the same places with respect to the sequences of columns as the horizontal partition lines
+  with respect to the sequence of rows.
+\end{definition}
+
+\begin{definition}
+  A diagonal block of a symmetrically partitioned matrix is a submatrix bounded by the $i$th and the $i + 1$th 
+  horizontal partition lines and the $i$th and the $i + 1$th vertical partition lines, for some positive integer $i$.
+
+  Or, just a block in a symmetrically partitioned matrix.
+\end{definition}
+
+\begin{definition}
+  A \vocab{block diagonal matrix} is symmetrically partitioned matrix whose nondiagonal blocks are all zero matrices.
+  Essentially, an identity matrix where there's blocks instead.
+
+  A block diagonal matrix is often said to be in block diagonal form.
+\end{definition}
+
+\begin{definition}
+  A \vocab{zero row} in a matrix is a row containing only zero elements; a \vocab{nonzero row} is a row that
+  contains at least one nonzero element.
+\end{definition}
+
+\begin{definition}[Row reduced form]
+  A matrix is in \vocab{row reduced form} if it satisfies the following four conditions:
+  \begin{enumerate}
+    \item All zero rows, if any, appear below all nonzero rows.
+    \item The first (from left to right) nonzero element in any nonzero row is $1$.
+    \item All elements below and in the same column as the first nonzero element in any nonzero row are $0$.
+    \item The first nonzero element of any nonzero row appears in a column further to the right than the first
+      nonzero element in any preceding row.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  A square matrix $A = \left[a_{i, j}\right]$ is \vocab{upper triangular} if $a_{i, j} = 0$ whenever $i > j$.
+
+  A square matrix $A = \left[a_{i, j}\right]$ is \vocab{lower triangular} if $a_{i, j} = 0$ whenever $i < j$.
+\end{definition}
+
+So, in an upper triangular matrix all elements below the main diagonal are zero.
+In a lower diagonal matrix, all elements above the main diagonal are zero.
+
+\begin{theorem}
+  The product of two upper triangular matrices is upper triangular; 
+  the product of two lower triangular matrices is lower triangular. 
+\end{theorem}
+
+
+
